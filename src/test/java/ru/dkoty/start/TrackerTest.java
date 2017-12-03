@@ -68,5 +68,26 @@ public class TrackerTest {
         String expected = "first second third";
         assertThat(result, is(expected));
     }
-}
 
+    @Test
+    public void whenFindAllItemThenReturnAllItems() {
+        Tracker tracker = new Tracker();
+        Item first = new Item("first", "first note", 123L);
+        Item second = new Item("second", "second note", 1234L);
+        Item third = new Item("third", "third note", 1235L);
+        Item fourth = new Item("fourth", "fourth note", 12347);
+        tracker.add(first);
+        tracker.add(second);
+        tracker.add(third);
+        tracker.add(fourth);
+        Item[] resultArr = tracker.findAll();
+        String resultStr = "";
+        for (int cnt = 0; cnt < resultArr.length; cnt++) {
+            String name = resultArr[cnt].getName();
+            resultStr = resultStr + " " + name;
+        }
+        String expected = " first second third fourth";
+        assertThat(resultStr, is(expected));
+    }
+
+}

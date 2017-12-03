@@ -71,7 +71,9 @@ public class Tracker {
                 result[cnt] = item;
                 cnt++;
             }
-        } return result;
+        }
+        result = Arrays.copyOf(result, cnt);
+        return result;
     }
 
     //Возвращает список всех элементов, кроме null.
@@ -81,9 +83,11 @@ public class Tracker {
         int cnt = 0;
         for (Item item : items) {
             if (item != null) {
-                result[cnt] = items[getCell(item)];
+                result[cnt] = items[this.getCell(item)];
                 cnt++;
             }
-        } return result;
+        }
+        result = Arrays.copyOf(result, cnt);
+        return result;
     }
 }
